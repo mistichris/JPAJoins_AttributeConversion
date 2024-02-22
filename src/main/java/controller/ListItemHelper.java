@@ -13,7 +13,7 @@ import model.ListItem;
  * @author Misti Christianson - mchristianson CIS175 - Spring 2024 Feb 1, 2024
  */
 public class ListItemHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingJPAJoinsAttributeConv");
 
 	//add an item to the database/table
 	public void insertItem(ListItem li) {
@@ -55,7 +55,7 @@ public class ListItemHelper {
 		em.getTransaction().commit();
 		em.close();
 	}
-	
+
 		//update item in database script
 	public void updateItem(ListItem toEdit) {
 		EntityManager em = emfactory.createEntityManager();
@@ -64,7 +64,7 @@ public class ListItemHelper {
 		em.getTransaction().commit();
 		em.close();
 		}
-	
+
 		//search for item by store script
 	public List<ListItem> searchForItemByStore(String storeName) {
 		EntityManager em = emfactory.createEntityManager();
@@ -75,7 +75,7 @@ public class ListItemHelper {
 		em.close();
 		return foundItems;
 		}
-	
+
 		//search for item by name script
 	public List<ListItem> searchForItemByItem(String itemName) {
 		EntityManager em = emfactory.createEntityManager();
@@ -86,7 +86,7 @@ public class ListItemHelper {
 		em.close();
 		return foundItems;
 		}
-	
+
 	//Search for Item by ID script
 	public ListItem searchForItemById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
@@ -96,7 +96,7 @@ public class ListItemHelper {
 		return found;
 		}
 
-	
+
 	//closing Entity Manager Factory
 	public void cleanUp(){
 		emfactory.close();

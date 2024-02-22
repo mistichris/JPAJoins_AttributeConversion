@@ -22,18 +22,18 @@ public class ListItem {
 	private String store;
 	@Column(name="ITEM")
 	private String item;
-	
+
 	public ListItem() {
 		super();
 	}
-	
+
 	public ListItem(String store, String item) {
 		super();
 		this.store = store;
 		this.item = item;
 
 	}
-	
+
 	public String returnItemDetails() {
 		return this.store + ": " + this.item;
 	}
@@ -66,7 +66,7 @@ public class ListItem {
 	public String toString() {
 		return "ListItem [id=" + id + ", store=" + store + ", item=" + item + "]";
 	}
-	
-	
-	
+
+
+
 }

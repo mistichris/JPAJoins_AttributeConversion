@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import model.ListItem;
 @WebServlet("/navigationServlet")
 public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,6 +27,7 @@ public class NavigationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -33,16 +35,17 @@ public class NavigationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ListItemHelper dao = new ListItemHelper();
 		String act = request.getParameter("doThisToItem");
 		//after all changes, we should redirect to the viewAllItems servlet
 		//The only time we don't is if they select to add a new item or edit
 		String path = "/viewAllItemsServlet";
-				
+
 		if(act.equals("delete")) {
 			try {
-				
+
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			ListItem itemToDelete = dao.searchForItemById(tempId);
 			dao.deleteItem(itemToDelete);
